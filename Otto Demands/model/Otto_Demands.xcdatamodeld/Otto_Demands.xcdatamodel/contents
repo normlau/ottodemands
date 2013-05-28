@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1811" systemVersion="11G63" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Demand" representedClassName="Demand" syncable="YES">
+        <relationship name="nodes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DemandNode" inverseName="parentDemand" inverseEntity="DemandNode" syncable="YES"/>
+        <relationship name="parentList" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="DemandList" inverseName="demands" inverseEntity="DemandList" syncable="YES"/>
+    </entity>
+    <entity name="DemandList" representedClassName="DemandList" syncable="YES">
+        <attribute name="title" attributeType="String" syncable="YES"/>
+        <relationship name="demands" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Demand" inverseName="parentList" inverseEntity="Demand" syncable="YES"/>
+    </entity>
+    <entity name="DemandNode" representedClassName="DemandNode" isAbstract="YES" syncable="YES">
+        <attribute name="position" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="parentDemand" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Demand" inverseName="nodes" inverseEntity="Demand" syncable="YES"/>
+    </entity>
+    <entity name="Subject" representedClassName="Subject" syncable="YES">
+        <attribute name="text" attributeType="String" syncable="YES"/>
+        <relationship name="parentList" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="SubjectList" inverseName="subjects" inverseEntity="SubjectList" syncable="YES"/>
+    </entity>
+    <entity name="SubjectList" representedClassName="SubjectList" syncable="YES">
+        <attribute name="title" attributeType="String" syncable="YES"/>
+        <attribute name="type" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="subjects" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Subject" inverseName="parentList" inverseEntity="Subject" syncable="YES"/>
+    </entity>
+    <entity name="SubjectNode" representedClassName="SubjectNode" parentEntity="DemandNode" syncable="YES">
+        <attribute name="options" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="TextNode" representedClassName="TextNode" parentEntity="DemandNode" syncable="YES">
+        <attribute name="text" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Demand" positionX="-3314" positionY="-639" width="128" height="75"/>
+        <element name="DemandList" positionX="-3555" positionY="-633" width="108" height="75"/>
+        <element name="DemandNode" positionX="-3024" positionY="-612" width="128" height="75"/>
+        <element name="Subject" positionX="-3314" positionY="-351" width="128" height="75"/>
+        <element name="SubjectList" positionX="-3539" positionY="-351" width="128" height="90"/>
+        <element name="SubjectNode" positionX="-2934" positionY="-468" width="128" height="60"/>
+        <element name="TextNode" positionX="-3123" positionY="-465" width="128" height="60"/>
+    </elements>
+</model>
